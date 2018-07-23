@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+ <form action="#"  th:action="@{/register}" th:object="${register}" role='form' method="post">
+  <input class="btn btn-primary" type="submit" value="Request Registration"/>
+ </form>
+</body>
+</html>

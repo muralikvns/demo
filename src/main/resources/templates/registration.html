@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Registration Page.....</title>
+
+<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+ 
+  </head>
+<body>
+  <div class='container'>
+    <div  class='panel panel-primary dialog-panel'>
+      <div style="background-color:#337ab7;" class='panel-heading'>
+        <h5>Register As Employee</h5>
+      </div>
+      <div class='panel-body'>
+        <form action="#" class='form-horizontal' th:action="@{/register}" th:object="${register}" role='form' method="post">
+          <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='id_accomodation'>Technologies</label>
+            <div class='col-md-2'>
+              <select class='form-control' id="technologies"  name="technologies" >
+                <option th:each="dropDownItem : ${tech}" id="technologies" 
+                                 th:value="${dropDownItem.id}"
+                                 th:text="${dropDownItem.technologies}" />
+              </select>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='id_title'>Name</label>
+            <div class='col-md-8'>
+              <div class='col-md-2'>
+                <div class='form-group internal'>
+                  <select class='form-control' id="Gender" name="Gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                </div>
+              </div>
+              <div class='col-md-3 indent-small'>
+                <div class='form-group internal'>
+                  <input class='form-control' th:field="*{firstName}" id='firstName' name="firstName" placeholder='First Name' type='text'/>
+                   <label  style="color:red;font-weight:bold" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                    </label>
+                </div>
+              </div>
+              <div class='col-md-3 indent-small'>
+                <div class='form-group internal'>
+                  <input class='form-control' th:field="*{lastName}" id="lastName" name="lastName" placeholder='Last Name' type='text'/>
+                   <label  style="color:red;font-weight:bold" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+                    </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='email'>Contact</label>
+            <div class='col-md-6'>
+              <div class='form-group'>
+                <div class='col-md-11'>
+                  <input class='form-control' th:field="*{email}" id="email" name="email" placeholder='E-mail' type='text'/>
+                   <label  style="color:red;font-weight:bold" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                   </label>
+                </div>
+              </div>
+              <div class='form-group internal'>
+                <div class='col-md-11'>
+                  <input class='form-control' id='id_phone' placeholder='Phone: (xxx) - xxx xxxx' type='text'/>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='id_equipment'>Experience</label>
+            <div class='col-md-8'>
+              <div class='col-md-3'>
+                <div class='form-group internal'>
+           <select class='form-control' id="experience" name="experience">
+                 <option th:each="dropDownItem : ${exp}" id="experience" 
+                                 th:value="${dropDownItem.id}"
+                                 th:text="${dropDownItem.experience}" />
+           </select>
+       </div>
+          </div>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='id_service'>Education</label>
+            <div class='col-md-8'>
+              <select class='multiselect' id='education' name="education" multiple='multiple'>
+                 <option th:each="dropDownItem : ${education}" id="education" 
+                                 th:value="${dropDownItem.id}"
+                                 th:text="${dropDownItem.education}" />
+              </select>
+        </div>
+          </div>
+          
+          <div class='form-group'>
+            <label class='control-label col-md-2 col-md-offset-2' for='id_comments'>Comments</label>
+            <div class='col-md-6'>
+              <textarea class='form-control' id='id_comments' placeholder='Additional comments' rows='3'></textarea>
+            </div>
+          </div>
+          <div class='form-group'>
+            <div class='col-md-offset-4 col-md-3'>
+			  <input class="btn btn-primary" type="submit" value="Request Registration"/>
+            </div>
+            <div class='col-md-3'>
+              <input class='btn btn-danger'  type='button' value="Cancel"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

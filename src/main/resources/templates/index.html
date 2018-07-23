@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Spring Boot Application</title>
+</head>
+<body><h1>courses listed Are</h1>
+<div th:each="course:${theCourses}"> 
+ <div th:text="${course.name}"></div>
+<div th:each="lesson:${course.lessons}"> 
+<div th:text="${lesson.name}"></div>
+</div>
+</div>
+Number of courses Are
+<div th:text="${key}"></div>
+</body>
+</html>
